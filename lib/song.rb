@@ -29,21 +29,30 @@ class Song
   end
   
   def self.genre_count
-    histogram = {}
+    histogram_genre = {}
     @@genres.map do |r|
-      if histogram.has_key?(r)
+      if histogram_genre.has_key?(r)
       puts r
-      histogram[r] << @@genres.count(r)
+      histogram_genre[r] << @@genres.count(r)
       else
       puts r
-      histogram[r] = @@genres.count(r)
+      histogram_genre[r] = @@genres.count(r)
       end
     end
-    histogram
+    histogram_genre
   end
   
   def self.artist_count
-    @@artists.uniq!.count
+    histogram_artists = {}
+    @@artists.map do |r|
+      if histogram_artists.has_key?(r)
+      puts r
+      histogram_artists[r] << @@artists.count(r)
+      else
+      puts r
+      histogram_artists[r] = @@artists.count(r)
+      end
+    end
+    histogram_artists
   end 
-
 end
