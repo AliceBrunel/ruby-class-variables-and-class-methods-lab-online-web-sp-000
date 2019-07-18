@@ -6,11 +6,11 @@ class Song
   
   def initialize(name,artist,genre)
     @name = name
-    @artist = artist
-    @genre = genre
-    
+
     @@count += 1
-    @@artist << name
+    @@artist << artist
+    @@genres << genre
+  
   end
   
   def self.count
@@ -18,7 +18,7 @@ class Song
   end
   
   def self.artists
-    @artists.uniq!
+    @@artist.uniq!
   end
   
   def self.genres
@@ -26,12 +26,11 @@ class Song
   end
   
   def self.genre_count
-    hash = {}
-    @@genres.each do |key|
-      puts key
-    end
+    @@genres.uniq!.count
   end
   
-  #artist_count 
+  def self.artist_count
+    @@artist.uniq!.count
+  end 
 
 end
