@@ -26,7 +26,17 @@ class Song
   end
   
   def self.genre_count
-    @@genres.uniq!.count
+    histogram = {}
+    @@genres.map do |r|
+      if histogram.has_key?(r)
+      puts r
+      histogram[r] << @@genres.count(r)
+      else
+      puts r
+      histogram[r] = @@genres.count(r)
+      end
+    end
+    histogram
   end
   
   def self.artist_count
